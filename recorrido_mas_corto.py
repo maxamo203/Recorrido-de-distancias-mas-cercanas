@@ -84,7 +84,7 @@ def recorrido_por_menor_distancia(coord):
         y.append(i[1])
     return x,y,distancia_minima
 
-n = 3
+n = int(input("Cantidad de puntos: "))
 
 x = [random.randint(1, 20) for i in range(n)]
 y = [random.randint(1, 20) for i in range(n)]
