@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
-import math
+from math import sqrt
 import random
-import numpy as np
 from itertools import permutations
 
 def min(a):
@@ -20,7 +19,7 @@ def suma_valores_lista(a):
     return suma
 
 def ditancia_entre_puntos(p1, p2):
-    return math.sqrt(pow(p2[0]- p1[0], 2)+pow(p2[1]- p1[1], 2))
+    return sqrt(pow(p2[0]- p1[0], 2)+pow(p2[1]- p1[1], 2))
 
 def recorrido_por_distancias_cercanas(coord):
     coordenadas = list(coord)
@@ -85,7 +84,7 @@ def recorrido_por_menor_distancia(coord):
         y.append(i[1])
     return x,y,distancia_minima
 
-n = 5
+n = 3
 
 x = [random.randint(1, 20) for i in range(n)]
 y = [random.randint(1, 20) for i in range(n)]
@@ -97,6 +96,21 @@ for i in range(len(x)):
 x2,y2,d = recorrido_por_menor_distancia(coordenadas)
 x1,y1, distancias = recorrido_por_distancias_cercanas(coordenadas)
 
+fig = plt.figure(figsize=(15,15))
+fig.tight_layout()
+ax = plt.subplot(1,2,1)
+plt.plot(x, y, 'o', markersize=5, color="red") #puntos
+plt.plot(x1[0], y1[0], 'o', markersize=6, color="blue")#primer punto
+plt.plot(x1, y1, markersize=2, color="green")
+ax.set_title("metodo por distancia cercana = {}".format(distancias))
+
+ax = plt.subplot(1,2,2)
+plt.plot(x, y, 'o', markersize=5, color="red") #puntos
+plt.plot(x2[0], y2[0], 'o', markersize=6, color="blue")#primer punto
+plt.plot(x2, y2, markersize=2, color="green")
+ax.set_title("metodo por menor distancia = {}".format(d))
+plt.show()
+'''
 plt.title("metodo por distancia cercana = {}".format(distancias))
 plt.grid()
 plt.plot(x, y, 'o', markersize=5, color="red") #puntos
@@ -110,3 +124,4 @@ plt.plot(x, y, 'o', markersize=5, color="red") #puntos
 plt.plot(x2[0], y2[0], 'o', markersize=6, color="blue")#primer punto
 plt.plot(x2, y2, markersize=2, color="green")
 plt.show()
+'''
